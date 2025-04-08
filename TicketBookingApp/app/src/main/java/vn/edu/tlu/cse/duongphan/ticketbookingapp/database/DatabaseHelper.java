@@ -1,6 +1,8 @@
 package vn.edu.tlu.cse.duongphan.ticketbookingapp.database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -19,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_EMAIL = "email";
     private static final String COL_PASSWORD = "password";
     private static final String COL_ROLE = "role";
-    private static final String COL_FULLNAME = "fullname";
+    private static final String COL_FULLNAME = "full_name";
 
     //bang xe:
     private static final String TABLE_CARS = "cars";
@@ -130,5 +132,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TICKETS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PAYMENTS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REVIEWS);
+    }
+
+    //add customer:
+    public void insertCustomer(String phone, String email, String password, String full_name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("phone_number", phone);
+        values.put("email", email);
+        values.put("password", password);
+        values.put("role", "Khách hàng");
+        values.put("fullname", full_name);
+
+        db.insert("users", null, values);
+    }
+
+    //kiem tra dang nhap:
+    public boolean checkUser(String phone_number, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS + " WHERE " +
+                COL_PHONE_NUMBER + " = ? AND " + COL_PASSWORD + " = ?", new String[]{phone_number, password});
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
+    }
+
+    public String checkRole(String phone_number, String password){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS + " WHERE " +
+                COL_PHONE_NUMBER + " = ? AND " + COL_PASSWORD + " = ?", new String[]{phone_number, password});
+        if(cursor !=null && cursor.moveToFirst()){
+            String role = cursor.getString(cursor.getColumnIndexOrThrow(COL_ROLE)); //lay vai tro nguoi dung thong qua index
+            cursor.close();
+            db.close();
+            return role;
+        }
+        cursor.close();
+        db.close();
+        return null;
     }
 }
