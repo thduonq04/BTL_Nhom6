@@ -1,4 +1,4 @@
-package vn.edu.tlu.cse.duongphan.ticketbookingapp.database;
+package vn.edu.tlu.cse.nhom6.ticketbookingapp.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
     //ten database
     private static final String DATABASE_NAME = "ticketbooking.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     //bang User:
 
@@ -77,49 +77,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_USERS + " (" +
                 COL_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_PHONE_NUMBER + "TEXT," +
-                COL_EMAIL + "TEXT," +
-                COL_PASSWORD + "TEXT," +
-                COL_ROLE + "TEXT," +
-                COL_FULLNAME + "TEXT)");
+                COL_PHONE_NUMBER + " TEXT," +
+                COL_EMAIL + " TEXT," +
+                COL_PASSWORD + " TEXT," +
+                COL_ROLE + " TEXT," +
+                COL_FULLNAME + " TEXT)");
         db.execSQL("CREATE TABLE " + TABLE_CARS + " (" +
                 COL_CAR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_CAR_NUMBER + "TEXT," +
-                COL_SEAT_COUNT + "INTEGER," +
-                COL_CAR_PHONE_NUMBER + "TEXT)");
+                COL_CAR_NUMBER + " TEXT," +
+                COL_SEAT_COUNT + " INTEGER," +
+                COL_CAR_PHONE_NUMBER + " TEXT)");
         db.execSQL("CREATE TABLE " + TABLE_ROUTES + " (" +
                 COL_ROUTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_START_LOCATION + "TEXT," +
-                COL_END_LOCATION + "TEXT," +
-                COL_DISTANCE + "INTEGER)");
+                COL_START_LOCATION + " TEXT," +
+                COL_END_LOCATION + " TEXT," +
+                COL_DISTANCE + " INTEGER)");
         db.execSQL("CREATE TABLE " + TABLE_SCHEDULES + " (" +
                 COL_SCHEDULE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_SCHEDULE_CAR_ID + "INTEGER," +
-                COL_SCHEDULE_ROUTE_ID + "INTEGER," +
-                COL_DEPARTURE_TIME + "TEXT," +
-                COL_ARRIVAL_TIME + "TEXT, " +
-                "FOREIGN KEY (" + COL_CAR_ID + ") REFERENCES " + TABLE_CARS + "(" + COL_CAR_ID + ")," +
-                "FOREIGN KEY (" + COL_ROUTE_ID + ") REFERENCES " + TABLE_ROUTES + "(" + COL_ROUTE_ID + "))");
+                COL_SCHEDULE_CAR_ID + " INTEGER," +
+                COL_SCHEDULE_ROUTE_ID + " INTEGER," +
+                COL_DEPARTURE_TIME + " TEXT," +
+                COL_ARRIVAL_TIME + " TEXT, " +
+                "FOREIGN KEY (" + COL_SCHEDULE_CAR_ID + ") REFERENCES " + TABLE_CARS + "(" + COL_CAR_ID + ")," +
+                "FOREIGN KEY (" + COL_SCHEDULE_ROUTE_ID + ") REFERENCES " + TABLE_ROUTES + "(" + COL_ROUTE_ID + "))");
         db.execSQL("CREATE TABLE " + TABLE_TICKETS + " (" +
                 COL_TICKET_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_TICKET_USER_ID + "INTEGER," +
-                COL_TICKET_SCHEDULE_ID + "INTEGER," +
-                COL_TICKET_SEAT_NUMBER + "INTEGER," +
-                COL_TICKET_PRICE + "INTEGER," +
-                COL_TICKET_STATUS + "TEXT," +
+                COL_TICKET_USER_ID + " INTEGER," +
+                COL_TICKET_SCHEDULE_ID + " INTEGER," +
+                COL_TICKET_SEAT_NUMBER + " INTEGER," +
+                COL_TICKET_PRICE + " INTEGER," +
+                COL_TICKET_STATUS + " TEXT," +
                 "FOREIGN KEY (" + COL_TICKET_USER_ID + ") REFERENCES " + TABLE_USERS + "(" + COL_USER_ID + ")," +
                 "FOREIGN KEY (" + COL_TICKET_SCHEDULE_ID + ") REFERENCES " + TABLE_SCHEDULES + "(" + COL_SCHEDULE_ID + "))");
         db.execSQL("CREATE TABLE " + TABLE_PAYMENTS + " (" +
                 COL_PAYMENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_PAYMENT_TICKET_ID + "INTEGER," +
-                COL_PAYMENT_METHOD + "TEXT," +
-                COL_PAYMENT_STATUS + "TEXT," +
+                COL_PAYMENT_TICKET_ID + " INTEGER," +
+                COL_PAYMENT_METHOD + " TEXT," +
+                COL_PAYMENT_STATUS + " TEXT," +
                 "FOREIGN KEY (" + COL_PAYMENT_TICKET_ID + ") REFERENCES " + TABLE_TICKETS + "(" + COL_TICKET_ID + "))");
         db.execSQL("CREATE TABLE " + TABLE_REVIEWS + " (" +
                 COL_REVIEW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_REVIEW_USER_ID + "INTEGER," +
-                COL_REVIEW_RATING + "INTEGER," +
-                COL_REVIEW_COMMENT + "TEXT," +
+                COL_REVIEW_USER_ID + " INTEGER," +
+                COL_REVIEW_RATING + " INTEGER," +
+                COL_REVIEW_COMMENT + " TEXT," +
                 "FOREIGN KEY (" + COL_REVIEW_USER_ID + ") REFERENCES " + TABLE_USERS + "(" + COL_USER_ID + "))");
     }
 
@@ -132,16 +132,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TICKETS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PAYMENTS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REVIEWS);
+        onCreate(db);
     }
 
     //add customer:
+<<<<<<< HEAD:TicketBookingApp/app/src/main/java/vn/edu/tlu/cse/duongphan/ticketbookingapp/database/DatabaseHelper.java
     public void insertCustomer(String phone, String email, String password, String full_name) {
+=======
+    public Boolean insertCustomer(String phone, String email, String password, String full_name) {
+>>>>>>> 93fc6ce11923330ebadc40463c8f300deb385e38:TicketBookingApp/app/src/main/java/vn/edu/tlu/cse/nhom6/ticketbookingapp/database/DatabaseHelper.java
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("phone_number", phone);
         values.put("email", email);
         values.put("password", password);
         values.put("role", "Khách hàng");
+<<<<<<< HEAD:TicketBookingApp/app/src/main/java/vn/edu/tlu/cse/duongphan/ticketbookingapp/database/DatabaseHelper.java
         values.put("fullname", full_name);
 
         db.insert("users", null, values);
@@ -157,6 +163,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return exists;
     }
 
+=======
+        values.put("full_name", full_name);
+
+        long insert = db.insert("users", null, values);
+        db.close();
+        if (insert == -1) {
+            return false;
+        }
+        return true;
+
+    }
+
+    //kiem tra dang nhap:
+//    public boolean checkUser(String phone_number, String password) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS + " WHERE " +
+//                COL_PHONE_NUMBER + " = ? AND " + COL_PASSWORD + " = ?", new String[]{phone_number, password});
+//        boolean exists = cursor.getCount() > 0;
+//        cursor.close();
+//        db.close();
+//        return exists;
+//
+//    }
+    public boolean checkUser(String phone_number) {
+        if (phone_number == null || phone_number.isEmpty()) {
+            return false;
+        }
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        boolean exists = false;
+
+        try {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS + " WHERE " +
+                    COL_PHONE_NUMBER + " = ? ", new String[]{phone_number});
+            exists = cursor.getCount() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) cursor.close();
+            db.close();
+        }
+
+        return exists;
+    }
+
+
+>>>>>>> 93fc6ce11923330ebadc40463c8f300deb385e38:TicketBookingApp/app/src/main/java/vn/edu/tlu/cse/nhom6/ticketbookingapp/database/DatabaseHelper.java
     public String checkRole(String phone_number, String password){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS + " WHERE " +
@@ -171,4 +225,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return null;
     }
+<<<<<<< HEAD:TicketBookingApp/app/src/main/java/vn/edu/tlu/cse/duongphan/ticketbookingapp/database/DatabaseHelper.java
 }
+=======
+    private void insertUser
+}
+>>>>>>> 93fc6ce11923330ebadc40463c8f300deb385e38:TicketBookingApp/app/src/main/java/vn/edu/tlu/cse/nhom6/ticketbookingapp/database/DatabaseHelper.java

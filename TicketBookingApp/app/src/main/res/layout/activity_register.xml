@@ -7,7 +7,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.RegisterActivity">
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 93fc6ce11923330ebadc40463c8f300deb385e38
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package vn.edu.tlu.cse.duongphan.ticketbookingapp;
+package vn.edu.tlu.cse.nhom6.ticketbookingapp;
 
 import org.junit.Test;
 

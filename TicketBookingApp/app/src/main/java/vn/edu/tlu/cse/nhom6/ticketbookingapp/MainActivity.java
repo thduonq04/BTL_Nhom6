@@ -1,4 +1,4 @@
-package vn.edu.tlu.cse.duongphan.ticketbookingapp.activity;
+package vn.edu.tlu.cse.nhom6.ticketbookingapp;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import vn.edu.tlu.cse.duongphan.ticketbookingapp.R;
+import vn.edu.tlu.cse.nhom6.ticketbookingapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

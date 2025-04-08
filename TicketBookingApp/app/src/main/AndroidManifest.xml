@@ -23,6 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
+<<<<<<< HEAD
             android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -37,6 +38,19 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="false">
+=======
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+>>>>>>> 93fc6ce11923330ebadc40463c8f300deb385e38
+
+        </activity>
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
 
         </activity>
     </application>
