@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TicketBookingApp</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string name="add_item">Thêm mới</string>
+    <string name="prompt_select_car_number">Chọn biển số xe</string>
+</resources>

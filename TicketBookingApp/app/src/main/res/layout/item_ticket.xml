@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@android:drawable/edit_text"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvTicketId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mã vé: 1"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvRoute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tuyến: Hà Nội -> Hải Phòng"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tvCarNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biển số xe: 29B-12345"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tvDepartureTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thời gian khởi hành: 2025-04-11 08:00"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tvSeatNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số ghế: 1"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giá vé: 150000 VNĐ"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trạng thái: Đặt"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hủy Vé"
+        android:background="@drawable/btn_border_red"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

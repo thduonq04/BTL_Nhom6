@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressTint">@color/lavender</item> <!-- Màu sao khi được chọn -->
+        <item name="android:secondaryProgressTint">@android:color/darker_gray</item> <!-- Màu sao khi chưa chọn -->
+    </style>
+</resources>

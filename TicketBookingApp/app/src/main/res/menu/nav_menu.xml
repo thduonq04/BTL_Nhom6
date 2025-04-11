@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_customer"
+            android:icon="@drawable/baseline_supervisor_account_24"
+            android:title="Khách hàng"/>
+        <item
+            android:id="@+id/nav_staff"
+            android:icon="@drawable/baseline_supervisor_account_24"
+            android:title="Nhân viên"/>
+        <item
+            android:id="@+id/nav_car"
+            android:icon="@drawable/carrrrr"
+            android:title="Xe"/>
+
+        <item
+            android:id="@+id/nav_qllt"
+            android:icon="@drawable/baseline_supervisor_schedule_24"
+            android:title="Quản lý lịch trình"/>
+
+        <item
+            android:id="@+id/nav_qlduong"
+            android:icon="@drawable/baseline_supervisor_route_24"
+            android:title="Quản lý tuyến đường"/>
+        <item
+            android:id="@+id/nav_ticket"
+            android:icon="@drawable/ticket"
+            android:title="Đặt vé"/>
+        <item
+            android:id="@+id/nav_ticketView"
+            android:icon="@drawable/history"
+            android:title="Xem vé"/>
+        <item
+            android:id="@+id/nav_review"
+            android:icon="@drawable/history"
+            android:title="Đánh giá"/>
+
+    </group>
+    <item
+        android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/baseline_logout_24"
+                android:title="Đăng xuất"/>
+        </menu>
+    </item>
+
+</menu>
