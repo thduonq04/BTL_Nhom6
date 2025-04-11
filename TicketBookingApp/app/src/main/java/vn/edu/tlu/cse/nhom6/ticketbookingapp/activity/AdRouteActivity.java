@@ -78,13 +78,19 @@ public class AdRouteActivity extends AppCompatActivity implements NavigationView
         loadRoutes();
 
         role = getIntent().getStringExtra("role");
+        Menu menu = navigationView.getMenu();
         if (!role.equals("Admin")) {
-            navigationView.getMenu().findItem(R.id.nav_staff).setVisible(false);
+            menu.findItem(R.id.nav_staff).setVisible(false);
+            menu.findItem(R.id.nav_ticket).setVisible(false);
+            menu.findItem(R.id.nav_review).setVisible(false);
+        }
+        else{
+            menu.findItem(R.id.nav_ticket).setVisible(false);
+            menu.findItem(R.id.nav_review).setVisible(false);
         }
 
 
-        Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_staff).setVisible(false);
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,6 +238,12 @@ public class AdRouteActivity extends AppCompatActivity implements NavigationView
         } else if (id == R.id.nav_car) {
             Intent intent = new Intent(this, ManageCarActivity.class);
             intent.putExtra("role", role); // Truyền role sang
+            startActivity(intent);
+        } else if (id == R.id.nav_ticketView) {
+            Intent intent = new Intent(this, ViewTicketsActivity.class);
+            intent.putExtra("role", role); // Truyền role sang
+            String phoneNumber = getIntent().getStringExtra("phoneNumber");
+            intent.putExtra("phoneNumber", phoneNumber);// Truyền role sang
             startActivity(intent);
         }
 

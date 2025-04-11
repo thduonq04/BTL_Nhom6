@@ -87,13 +87,19 @@ public class AdScheduleActivity extends AppCompatActivity implements NavigationV
         loadCarNumbers();
 
         role = getIntent().getStringExtra("role");
+        Menu menu = navigationView.getMenu();
         if (!role.equals("Admin")) {
-            navigationView.getMenu().findItem(R.id.nav_staff).setVisible(false);
+            menu.findItem(R.id.nav_staff).setVisible(false);
+            menu.findItem(R.id.nav_ticket).setVisible(false);
+            menu.findItem(R.id.nav_review).setVisible(false);
+        } else{
+            menu.findItem(R.id.nav_ticket).setVisible(false);
+            menu.findItem(R.id.nav_review).setVisible(false);
         }
 
 
-        Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_staff).setVisible(false);
+
+
 
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -312,6 +318,12 @@ public class AdScheduleActivity extends AppCompatActivity implements NavigationV
             intent.putExtra("role", role); // Truyền role sang
             startActivity(intent);
 
+        }  else if (id == R.id.nav_ticketView) {
+            Intent intent = new Intent(this, ViewTicketsActivity.class);
+            intent.putExtra("role", role); // Truyền role sang
+            String phoneNumber = getIntent().getStringExtra("phoneNumber");
+            intent.putExtra("phoneNumber", phoneNumber);// Truyền role sang
+            startActivity(intent);
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

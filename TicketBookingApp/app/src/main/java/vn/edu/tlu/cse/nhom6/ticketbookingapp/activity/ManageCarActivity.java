@@ -2,11 +2,13 @@ package vn.edu.tlu.cse.nhom6.ticketbookingapp.activity;
 
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +42,7 @@ public class ManageCarActivity extends AppCompatActivity implements CarAdapter.O
     private List<Car> carList;
     private DatabaseHelper databaseHelper;
     private EditText etSearch;
+    String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,18 @@ public class ManageCarActivity extends AppCompatActivity implements CarAdapter.O
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setCheckedItem(R.id.nav_car);
+
+        role = getIntent().getStringExtra("role");
+        Menu menu = navigationView.getMenu();
+        if (!role.equals("Admin")) {
+            menu.findItem(R.id.nav_staff).setVisible(false);
+            menu.findItem(R.id.nav_ticket).setVisible(false);
+            menu.findItem(R.id.nav_review).setVisible(false);
+        }
+        else{
+            menu.findItem(R.id.nav_ticket).setVisible(false);
+            menu.findItem(R.id.nav_review).setVisible(false);
+        }
 
         recyclerView = findViewById(R.id.recyclerView);
         etSearch = findViewById(R.id.etSearch);
@@ -171,6 +187,39 @@ public class ManageCarActivity extends AppCompatActivity implements CarAdapter.O
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+        int id = item.getItemId();
+
+        if (id == R.id.nav_qlduong) {
+            Intent intent = new Intent(this, AdRouteActivity.class);
+            intent.putExtra("role", role); // Truyền role sang
+            startActivity(intent);
+        } else if (id == R.id.nav_logout) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_staff) {
+            Intent intent = new Intent(this, AdStaffActivity.class);
+            intent.putExtra("role", role); // Truyền role sang
+            startActivity(intent);
+        } else if (id == R.id.nav_qllt) {
+            Intent intent = new Intent(this, AdScheduleActivity.class);
+            intent.putExtra("role", role); // Truyền role sang
+            startActivity(intent);
+        } else if (id == R.id.nav_customer) {
+            Intent intent = new Intent(this, CustomerMainActivity.class);
+            intent.putExtra("role", role); // Truyền role sang
+            startActivity(intent);
+        } else if (id == R.id.nav_ticketView) {
+            Intent intent = new Intent(this, ViewTicketsActivity.class);
+            intent.putExtra("role", role); // Truyền role sang
+            String phoneNumber = getIntent().getStringExtra("phoneNumber");
+            intent.putExtra("phoneNumber", phoneNumber);// Truyền role sang
+            startActivity(intent);
+        }
+
+
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

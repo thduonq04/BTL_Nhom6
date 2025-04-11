@@ -51,7 +51,7 @@ public class CustomerMainActivity extends AppCompatActivity implements Navigatio
         role = getIntent().getStringExtra("role");
         phone_number = getIntent().getStringExtra("phone_number");
 
-        if(!role.equals("Nhân viên")&&!role.equals("Admin")){
+        if(role.equals("Khách hàng")){
             navigationView.getMenu().findItem(R.id.nav_customer).setVisible(false);
             navigationView.getMenu().findItem(R.id.nav_qllt).setVisible(false);
             navigationView.getMenu().findItem(R.id.nav_qlduong).setVisible(false);

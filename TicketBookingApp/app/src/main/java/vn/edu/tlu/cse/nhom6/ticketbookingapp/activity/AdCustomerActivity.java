@@ -43,6 +43,7 @@ public class AdCustomerActivity extends AppCompatActivity implements NavigationV
     private List<String> customerDisplayList;
     private int selectedCustomerId = -1;
     private String role;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +69,20 @@ public class AdCustomerActivity extends AppCompatActivity implements NavigationV
         }
 
         role = getIntent().getStringExtra("role");
+        Menu menu = navigationView.getMenu();
         if (!role.equals("Admin")) {
-            navigationView.getMenu().findItem(R.id.nav_staff).setVisible(false);
+            menu.findItem(R.id.nav_staff).setVisible(false);
+            menu.findItem(R.id.nav_ticket).setVisible(false);
+            menu.findItem(R.id.nav_review).setVisible(false);
+        }
+        else{
+            menu.findItem(R.id.nav_ticket).setVisible(false);
+            menu.findItem(R.id.nav_review).setVisible(false);
         }
 
 
-        Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_staff).setVisible(false);
+
+
 
         etFullname = findViewById(R.id.et_fullname);
         etPhone = findViewById(R.id.et_phone);
@@ -91,6 +99,7 @@ public class AdCustomerActivity extends AppCompatActivity implements NavigationV
         customerDisplayList = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, customerDisplayList);
         lvCustomers.setAdapter(adapter);
+        user = (User) getIntent().getSerializableExtra("user");
 
         loadCustomers();
 
@@ -222,6 +231,12 @@ public class AdCustomerActivity extends AppCompatActivity implements NavigationV
         } else if (id == R.id.nav_car) {
             Intent intent = new Intent(this, ManageCarActivity.class);
             intent.putExtra("role", role); // Truyền role sang
+            startActivity(intent);
+        } else if (id == R.id.nav_ticketView) {
+            Intent intent = new Intent(this, ViewTicketsActivity.class);
+            intent.putExtra("role", role); // Truyền role sang
+            String phoneNumber = getIntent().getStringExtra("phoneNumber");
+            intent.putExtra("phoneNumber", phoneNumber);// Truyền role sang
             startActivity(intent);
         }
 

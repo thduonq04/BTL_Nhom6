@@ -7,6 +7,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,6 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button buttonRegister;
 
     private DatabaseHelper db;
+    private TextView textViewLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextFullName = findViewById(R.id.editTextFullName);
         buttonRegister = findViewById(R.id.buttonRegister);
+        textViewLogin = findViewById(R.id.textViewLogin);
         db = new DatabaseHelper(this);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +88,14 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 }
+            }
+        });
+        textViewLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

@@ -41,6 +41,7 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
         role = getIntent().getStringExtra("role");
         if (role.equals("Admin")) {
             navigationView.getMenu().findItem(R.id.nav_staff).setVisible(true);
+
         }
         Menu menu = navigationView.getMenu();
         menu.findItem(R.id.nav_staff).setVisible(true);

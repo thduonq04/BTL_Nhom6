@@ -100,7 +100,19 @@ public class AdStaffActivity extends AppCompatActivity implements NavigationView
 
 
 
-//        role = getIntent().getStringExtra("role");
+        role = getIntent().getStringExtra("role");
+        Menu menu1 = navigationView.getMenu();
+        if(role.equals("Admin")){
+            menu1.findItem(R.id.nav_staff).setVisible(true);
+            menu1.findItem(R.id.nav_logout).setVisible(true);
+            menu1.findItem(R.id.nav_customer).setVisible(true);
+            menu1.findItem(R.id.nav_car).setVisible(true);
+            menu1.findItem(R.id.nav_qlduong).setVisible(true);
+            menu1.findItem(R.id.nav_qllt).setVisible(true);
+            menu1.findItem(R.id.nav_ticket).setVisible(false);
+            menu1.findItem(R.id.nav_review).setVisible(true);
+            menu1.findItem(R.id.nav_review).setVisible(false);
+        }
 //        if (role.equals("Admin")) {
 //            navigationView.getMenu().findItem(R.id.nav_staff).setVisible(true);
 //            navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
@@ -255,6 +267,14 @@ public class AdStaffActivity extends AppCompatActivity implements NavigationView
             intent.putExtra("role", role); // Truyền role sang
             startActivity(intent);
         }
+        else if (id == R.id.nav_ticketView) {
+            Intent intent = new Intent(this, ViewTicketsActivity.class);
+            intent.putExtra("role", role); // Truyền role sang
+            String phoneNumber = getIntent().getStringExtra("phoneNumber");
+            intent.putExtra("phoneNumber", phoneNumber);// Truyền role sang
+            startActivity(intent);
+        }
+
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

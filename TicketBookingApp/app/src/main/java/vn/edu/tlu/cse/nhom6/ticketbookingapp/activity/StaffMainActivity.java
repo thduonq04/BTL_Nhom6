@@ -99,10 +99,11 @@ public class StaffMainActivity extends AppCompatActivity implements NavigationVi
                     intent.putExtra("phoneNumber", phone_number);
                     startActivity(intent);
             }
-            else if(id == R.id.nav_ticketView){
+            else if (id == R.id.nav_ticketView) {
                 Intent intent = new Intent(this, ViewTicketsActivity.class);
                 intent.putExtra("role", role); // Truyền role sang
-                intent.putExtra("phoneNumber", phone_number);
+                String phoneNumber = getIntent().getStringExtra("phoneNumber");
+                intent.putExtra("phoneNumber", phoneNumber);// Truyền role sang
                 startActivity(intent);
             }
 
