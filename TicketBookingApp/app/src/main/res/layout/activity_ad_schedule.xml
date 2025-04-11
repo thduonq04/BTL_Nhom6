@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="5dp"
-                android:text="Sửa tuyến đường"
+                android:text="Sửa lịch trình"
                 android:background="@drawable/rounded_button"
                 android:textSize="14sp"
                 android:visibility="gone" />
