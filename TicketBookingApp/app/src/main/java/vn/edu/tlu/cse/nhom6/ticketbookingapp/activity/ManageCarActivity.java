@@ -54,7 +54,7 @@ public class ManageCarActivity extends AppCompatActivity implements CarAdapter.O
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setCheckedItem(R.id.nav_qllt);
+        navigationView.setCheckedItem(R.id.nav_car);
 
         recyclerView = findViewById(R.id.recyclerView);
         etSearch = findViewById(R.id.etSearch);
