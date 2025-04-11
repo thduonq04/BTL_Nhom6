@@ -141,8 +141,7 @@ public class AdRouteActivity extends AppCompatActivity implements NavigationView
                         Toast.makeText(this, "Sửa tuyến  đường thành công!", Toast.LENGTH_SHORT).show();
                         clearInputs();
                         loadRoutes();
-                        btnAdd.setVisibility(View.VISIBLE);
-                        btnUpdate.setVisibility(View.GONE);
+
                         selectedRouteId = -1;
                     } else {
                         Toast.makeText(this, "Sửa thất bại!", Toast.LENGTH_SHORT).show();

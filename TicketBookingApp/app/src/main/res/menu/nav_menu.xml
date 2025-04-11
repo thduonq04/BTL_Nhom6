@@ -38,7 +38,7 @@
             android:title="Xem vé"/>
         <item
             android:id="@+id/nav_review"
-            android:icon="@drawable/history"
+            android:icon="@drawable/review"
             android:title="Đánh giá"/>
 
     </group>

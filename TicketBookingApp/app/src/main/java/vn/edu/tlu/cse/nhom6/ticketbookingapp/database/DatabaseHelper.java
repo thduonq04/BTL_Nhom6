@@ -885,7 +885,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_TICKET_PRICE, price);
         values.put(COL_TICKET_STATUS, "Đặt");
         long result = db.insert(TABLE_TICKETS, null, values);
-        db.close();
         return result != -1;
     }
 

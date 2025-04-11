@@ -57,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "Email sai định dạng. Vui lòng nhập lại!", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        Toast.makeText(RegisterActivity.this, "ok fine", Toast.LENGTH_SHORT).show();
                         if(db.checkUser1(phone_number)){
                             Toast.makeText(RegisterActivity.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
                         }

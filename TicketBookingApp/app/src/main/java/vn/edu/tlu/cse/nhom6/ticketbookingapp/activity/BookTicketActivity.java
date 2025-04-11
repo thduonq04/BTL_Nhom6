@@ -184,21 +184,13 @@ public class BookTicketActivity extends AppCompatActivity implements NavigationV
                 // Đặt vé
                 boolean success = dbHelper.bookTicket(user.getId(), selectedScheduleId, selectedSeat, price);
                 if (success) {
-                    // Thêm bản ghi thanh toán
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
-                    ContentValues paymentValues = new ContentValues();
-                    paymentValues.put("ticket_id", getLastTicketId());
-                    paymentValues.put("method", selectedPaymentMethod);
-                    paymentValues.put("status", "Thành công");
-                    long paymentResult = db.insert("payments", null, paymentValues);
-                    db.close();
+                    Toast.makeText(BookTicketActivity.this, "Đặt vé thành công", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(BookTicketActivity.this, ViewTicketsActivity.class);
+                    intent.putExtra("role", role); // Truyền role sang
+                    String phoneNumber = getIntent().getStringExtra("phoneNumber");
+                    intent.putExtra("phoneNumber", phoneNumber);// Truyền role sang
+                    startActivity(intent);
 
-                    if (paymentResult != -1) {
-                        Toast.makeText(BookTicketActivity.this, "Đặt vé và thanh toán thành công", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(BookTicketActivity.this, "Đặt vé thành công nhưng thanh toán thất bại", Toast.LENGTH_SHORT).show();
-                    }
-                    finish();
                 } else {
                     Toast.makeText(BookTicketActivity.this, "Đặt vé thất bại", Toast.LENGTH_SHORT).show();
                 }
