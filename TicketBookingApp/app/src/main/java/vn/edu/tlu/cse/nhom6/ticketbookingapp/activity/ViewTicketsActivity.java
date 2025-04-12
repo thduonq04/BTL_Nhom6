@@ -141,7 +141,7 @@ public class ViewTicketsActivity extends AppCompatActivity implements Navigation
                 loadTickets(ticket.getTicket_user_id());
             }
         });
-        rvTickets.setLayoutManager(new LinearLayoutManager(this));
+        rvTickets.setLayoutManager(new LinearLayoutManager(this));//thiet lap hien thi bo cuc layout cho recyclerview
         rvTickets.setAdapter(ticketAdapter);
 
         if (role.equals("Admin") || role.equals("Nhân viên")) {
@@ -152,9 +152,9 @@ public class ViewTicketsActivity extends AppCompatActivity implements Navigation
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     User selectedUser = customerList.get(position);
                     if (selectedUser.getId() == -1) {
-                        loadAllTickets();
+                        loadAllTickets(); //chon muc "tat ca khach hang"thi no load het tat ca
                     } else {
-                        loadTickets(selectedUser.getId());
+                        loadTickets(selectedUser.getId()); //khong thi dua ra theo tung cus
                     }
                 }
 
@@ -164,7 +164,7 @@ public class ViewTicketsActivity extends AppCompatActivity implements Navigation
                 }
             });
         } else {
-            loadTickets(user.getId());
+            loadTickets(user.getId()); //khach nao xem cua ng do
         }
     }
 
@@ -209,7 +209,7 @@ public class ViewTicketsActivity extends AppCompatActivity implements Navigation
         }
     }
 
-    private void loadCustomers() {
+    private void loadCustomers() { //load ds va dua vao spinnerCtomers
         customerList = dbHelper.getAllCustomers();
         List<String> customerNames = new ArrayList<>();
         customerList.add(0, new User(-1, "Tất cả", "", "", "", ""));

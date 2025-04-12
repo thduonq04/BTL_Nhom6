@@ -63,10 +63,7 @@ public class AdStaffActivity extends AppCompatActivity implements NavigationView
 
         navigationView.setCheckedItem(R.id.nav_staff);
 
-        if (savedInstanceState == null) {
-            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            // này chắc bỏ á m :))) cop từ nav vè mà 0 cần đến hay sao á
-        }
+
 
         role = getIntent().getStringExtra("role");
         Menu menu = navigationView.getMenu();

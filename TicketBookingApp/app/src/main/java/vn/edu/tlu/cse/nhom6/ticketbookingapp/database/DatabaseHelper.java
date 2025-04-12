@@ -567,9 +567,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_END_LOCATION, endLocation);
         values.put(COL_DISTANCE, distance);
 
-        long id = db.insert(TABLE_ROUTES, null, values);
+        long result = db.insert(TABLE_ROUTES, null, values);
         db.close();
-        return id;
+        return result;
     }
 
     public List<Route> getAllRoute() {

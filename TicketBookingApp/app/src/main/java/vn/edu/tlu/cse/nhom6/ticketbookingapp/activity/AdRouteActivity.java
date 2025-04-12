@@ -43,6 +43,7 @@ public class AdRouteActivity extends AppCompatActivity implements NavigationView
     private List<String> routeDisplayList;
     private int selectedRouteId = -1;
     private String role;
+    private String phone_number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,7 @@ public class AdRouteActivity extends AppCompatActivity implements NavigationView
         loadRoutes();
 
         role = getIntent().getStringExtra("role");
+        phone_number = getIntent().getStringExtra("phoneNumber");
         Menu menu = navigationView.getMenu();
         if (!role.equals("Admin")) {
             menu.findItem(R.id.nav_staff).setVisible(false);
@@ -221,6 +223,7 @@ public class AdRouteActivity extends AppCompatActivity implements NavigationView
         if (id == R.id.nav_customer) {
             Intent intent = new Intent(this, AdCustomerActivity.class);
             intent.putExtra("role", role); // Truyền role sang
+            intent.putExtra("phoneNumber", phone_number);
             startActivity(intent);
         } else if (id == R.id.nav_logout) {
             Intent intent = new Intent(this, LoginActivity.class);

@@ -210,18 +210,6 @@ public class AdScheduleActivity extends AppCompatActivity implements NavigationV
             btnUpdate.setVisibility(View.VISIBLE);
         });
 
-        lvSchedules.setOnItemLongClickListener((parent, view, position, id) -> {
-            Schedule selectedSchedule = scheduleList.get(position);
-            boolean success = dbHelper.deleteSchedule(selectedSchedule.getScheduleId()); // Sửa deleteStaff thành deleteSchedule
-            if (success) {
-                Toast.makeText(this, "Xóa lịch trình thành công!", Toast.LENGTH_SHORT).show();
-                loadSchedules();
-            } else {
-                Toast.makeText(this, "Xóa thất bại!", Toast.LENGTH_SHORT).show();
-            }
-            return true;
-        });
-
 
     }
 
